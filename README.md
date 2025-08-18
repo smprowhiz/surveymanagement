@@ -1,14 +1,14 @@
 # LDP Survey Management App
 
-This project is a full-stack web application for managing surveys, as described in the LDP Survey Management App requirements document. It includes:
+Status: Step 1 – Admin user journey only (2025-08-18)
 
-- User authentication (Admin, Survey Creator, Respondent roles)
-- Survey creation and management
-- Survey distribution
-- Response collection
-- Reporting and analytics
-- Admin management
-- Sample data for demonstration
+This step delivers the admin-only experience:
+
+- Admin login (JWT)
+- Admin CRUD for Companies and Employees
+- Seeded admin user and sample data
+
+Note: Non-admin journeys (survey creation, distribution, responses, analytics, etc.) are intentionally out of scope for Step 1.
 
 ## Tech Stack
 - Frontend: React
@@ -21,7 +21,14 @@ This project is a full-stack web application for managing surveys, as described 
 - Node.js (v18 or above recommended)
 - npm (comes with Node.js)
 
-### Setup
+### Run with Docker (recommended)
+
+1. From the project root, build and start:
+   - Backend: http://localhost:5000
+   - Frontend: http://localhost:3000
+2. Login with admin credentials: `admin` / `admin123`.
+
+### Setup (without Docker)
 
 1. **Install backend dependencies:**
    ```
@@ -46,12 +53,16 @@ This project is a full-stack web application for managing surveys, as described 
 
 The backend will run on http://localhost:5000 and the frontend on http://localhost:3000 by default.
 
+### Admin Credentials
+- Username: `admin`
+- Password: `admin123`
+
 ## Sample Data
-Sample users, surveys, and responses are preloaded for demo purposes.
+Sample admin user, companies, and employees are preloaded for demo purposes.
 
 ## Project Structure
-- `backend/` - Express API, SQLite DB, authentication, business logic
-- `frontend/` - React app, UI components, API integration
+- `backend/` - Express API, SQLite DB, authentication, admin CRUD
+- `frontend/` - React app, admin UI, API integration
 
 ## Customization
 You can modify the sample data and configuration as needed for your use case.
