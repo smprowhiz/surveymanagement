@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../App.css';
 
 const API = 'http://localhost:5000/api';
-
 
 export default function CompanyManager({ token }) {
   const [companies, setCompanies] = useState([]);
@@ -57,7 +57,7 @@ export default function CompanyManager({ token }) {
 
   if (loading) return <div>Loading companies...</div>;
   return (
-    <div>
+    <div className="app-container">
       <h3>Companies</h3>
       <form onSubmit={editing ? handleUpdate : handleAdd}>
         <input value={name} onChange={e => setName(e.target.value)} placeholder="Company name" required />
@@ -66,13 +66,17 @@ export default function CompanyManager({ token }) {
         <button type="submit">{editing ? 'Update' : 'Add'}</button>
         {editing && <button type="button" onClick={() => { setEditing(null); setName(''); setAddress(''); setContactEmail(''); }}>Cancel</button>}
       </form>
-      {error && <div style={{color:'red'}}>{error}</div>}
-      <ul>
+      {error && <div className="error">{error}</div>}
+      <ul className="card-list">
         {companies.map(c => (
-          <li key={c.id}>
-            <b>{c.name}</b> | {c.address} | {c.contact_email} {' '}
-            <button onClick={() => handleEdit(c)}>Edit</button>
-            <button onClick={() => handleDelete(c.id)}>Delete</button>
+          <li className="card" key={c.id}>
+            <div className="card-title">{c.name}</div>
+            <div className="card-details">{c.address}</div>
+            <div className="card-details">{c.contact_email}</div>
+            <div className="card-actions">
+              <button onClick={() => handleEdit(c)}>Edit</button>
+              <button onClick={() => handleDelete(c.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
