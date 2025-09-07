@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - FRONTEND_BASE_URL=http://localhost:3000
+      - JWT_SECRET=prod-jwt-secret-key-CHANGE-THIS-IN-REAL-PRODUCTION
+      - BCRYPT_SALT_ROUNDS=12
+      - JWT_EXPIRES_IN=1h
+      - DEMO_AUTO_SEED=false
+      - ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+      - DB_NAME=survey.db
+    volumes:
+      - ./data-prod:/app/data
+    container_name: surveyproject-backend-prod
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:80"
+    restart: always
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    container_name: surveyproject-frontend-prod
