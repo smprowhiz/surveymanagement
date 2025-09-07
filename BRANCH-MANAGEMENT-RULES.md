@@ -26,9 +26,13 @@
    - When in doubt: **PRESERVE THE BRANCH**
 
 ## 🎯 **Current Branch Strategy**
-- **`main`**: Enhanced development code (ports 3001/5001)
-- **`Reporting`**: Production code (ports 3000/5000)
+- **`main`**: Enhanced development code (ports 3001/5001) - primary development branch
+- **`Questions-Multidimensional-Tagging`**: Active feature development - current working branch
+- **`survey-enhancements`**: ABANDONED - dummy data management issues
+- **`Reporting`**: Production code (ports 3000/5000) - stable production branch
 - **Any future branches**: Preserve unless explicitly told to delete
+
+📋 **See BRANCH-STATUS.md for detailed branch history and abandonment reasons**
 
 ## 📝 **Safe Commands to Use**
 ✅ `git checkout [branch]` - Switch branches
