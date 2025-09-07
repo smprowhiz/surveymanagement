@@ -26,8 +26,9 @@
    - When in doubt: **PRESERVE THE BRANCH**
 
 ## 🎯 **Current Branch Strategy**
-- **`main`**: Enhanced development code (ports 3001/5001)
-- **`Reporting`**: Production code (ports 3000/5000)
+- **`main`**: Enhanced development code (ports 3001/5001) - primary development branch
+- **`survey-enhancements`**: Active feature development (ports 3001/5001) - current working branch
+- **`Reporting`**: Production code (ports 3000/5000) - stable production branch
 - **Any future branches**: Preserve unless explicitly told to delete
 
 ## 📝 **Safe Commands to Use**
