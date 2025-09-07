@@ -1,0 +1,74 @@
+# Node modules
+node_modules
+npm-debug.log
+
+# Environment files (handled by docker-compose)
+.env
+.env.local
+.env.development
+.env.production
+
+# Database files (mounted as volumes)
+*.db
+*.db-journal
+data-dev/
+data-prod/
+
+# Logs
+logs
+*.log
+
+# Build outputs
+build/
+dist/
+
+# Version control
+.git
+.gitignore
+
+# Documentation
+*.md
+*.txt
+*.pdf
+*.docx
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# Test files
+test/
+tests/
+__tests__/
+*.test.js
+*.spec.js
+
+# Scripts not needed in container
+*.ps1
+*.bat
+*.sh
+
+# Backup files
+*.backup
+*.bak
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Reports and analysis
+*report*
+*analysis*
+security-analysis.csv
+Security-Analysis-Report.xlsx

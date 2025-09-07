@@ -1,0 +1,25 @@
+{
+  "name": "ldp-survey-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:dev": "cross-env PORT=3001 REACT_APP_API_BASE_URL=http://localhost:5001 react-scripts start",
+    "start:prod": "cross-env PORT=3000 REACT_APP_API_BASE_URL=http://localhost:5000 react-scripts start",
+    "build": "react-scripts build",
+    "build:dev": "cross-env REACT_APP_API_BASE_URL=http://localhost:5001 react-scripts build",
+    "build:prod": "cross-env REACT_APP_API_BASE_URL=http://localhost:5000 react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🐛 Debug Backend Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/index.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "5001",
+        "DB_PATH": "./survey-dev.db"
+      },
+      "console": "integratedTerminal",
+      "restart": true,
+      "runtimeExecutable": "node",
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/backend"
+    },
+    {
+      "name": "🐛 Debug Migration Script",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/fix_rater_assignments.js",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "🐛 Attach to Docker Backend",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}/backend",
+      "remoteRoot": "/app",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

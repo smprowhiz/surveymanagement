@@ -1,0 +1,254 @@
+{
+	"folders": [
+		{
+			"name": "🎯 Survey Management System",
+			"path": "."
+		},
+		{
+			"name": "📊 Frontend (React)",
+			"path": "./frontend"
+		},
+		{
+			"name": "⚙️ Backend (Node.js)",
+			"path": "./backend"
+		},
+		{
+			"name": "📄 Documentation",
+			"path": "./docs"
+		},
+		{
+			"name": "🔧 Scripts & Tools",
+			"path": "./scripts"
+		}
+	],
+	"settings": {
+		"// Project Settings": "Enhanced 360° Feedback System Workspace",
+		"workbench.colorTheme": "Default Dark+",
+		"editor.fontSize": 14,
+		"editor.tabSize": 2,
+		"editor.insertSpaces": true,
+		"editor.wordWrap": "on",
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit"
+		},
+		
+		"// File Associations": "Project-specific file handling",
+		"files.associations": {
+			"*.js": "javascript",
+			"*.json": "jsonc",
+			"docker-compose*.yml": "yaml",
+			"Dockerfile*": "dockerfile",
+			"*.md": "markdown"
+		},
+		
+		"// Terminal Settings": "PowerShell for Windows",
+		"terminal.integrated.defaultProfile.windows": "PowerShell",
+		"terminal.integrated.cwd": "${workspaceFolder}",
+		
+		"// Docker Integration": "Development environment settings",
+		"docker.defaultRegistryPath": "",
+		"docker.dockerPath": "docker",
+		
+		"// Git Settings": "Repository configuration",
+		"git.autofetch": true,
+		"git.enableSmartCommit": true,
+		"git.confirmSync": false,
+		"git.defaultCloneDirectory": "./",
+		
+		"// Search Settings": "Project-wide search configuration",
+		"search.exclude": {
+			"**/node_modules": true,
+			"**/data-dev": true,
+			"**/data-prod": true,
+			"**/.git": true,
+			"**/dist": true,
+			"**/build": true,
+			"**/*.log": true
+		},
+		
+		"// File Watcher": "Auto-reload for development",
+		"files.watcherExclude": {
+			"**/node_modules/**": true,
+			"**/data-dev/**": true,
+			"**/data-prod/**": true,
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true
+		},
+		
+		"// Language Specific": "JavaScript and React settings",
+		"javascript.updateImportsOnFileMove.enabled": "always",
+		"typescript.updateImportsOnFileMove.enabled": "always",
+		"emmet.includeLanguages": {
+			"javascript": "javascriptreact"
+		},
+		
+		"// Chat & Copilot Settings": "AI assistance configuration",
+		"github.copilot.enable": {
+			"*": true,
+			"plaintext": false,
+			"markdown": true,
+			"scminput": false
+		},
+		"github.copilot.chat.localeOverride": "en",
+		"workbench.chat.experimental.implicitContext": true
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "🚀 Start Development Environment",
+				"type": "shell",
+				"command": "docker-compose",
+				"args": ["-f", "docker-compose.dev.yml", "up", "--build"],
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"presentation": {
+					"echo": true,
+					"reveal": "always",
+					"focus": false,
+					"panel": "new",
+					"showReuseMessage": true,
+					"clear": false
+				},
+				"isBackground": true,
+				"problemMatcher": []
+			},
+			{
+				"label": "🏭 Start Production Environment",
+				"type": "shell",
+				"command": "docker-compose",
+				"args": ["up", "--build"],
+				"group": "build",
+				"presentation": {
+					"echo": true,
+					"reveal": "always",
+					"focus": false,
+					"panel": "new"
+				},
+				"isBackground": true,
+				"problemMatcher": []
+			},
+			{
+				"label": "🛑 Stop All Containers",
+				"type": "shell",
+				"command": "docker-compose",
+				"args": ["down"],
+				"group": "build",
+				"presentation": {
+					"echo": true,
+					"reveal": "always",
+					"focus": false,
+					"panel": "shared"
+				}
+			},
+			{
+				"label": "📊 Check System Status",
+				"type": "shell",
+				"command": "powershell",
+				"args": ["-File", "./status.ps1"],
+				"group": "test",
+				"presentation": {
+					"echo": true,
+					"reveal": "always",
+					"focus": false,
+					"panel": "shared"
+				}
+			},
+			{
+				"label": "🔄 Git Sync to GitHub",
+				"type": "shell",
+				"command": "git",
+				"args": ["push", "origin", "development"],
+				"group": "build",
+				"presentation": {
+					"echo": true,
+					"reveal": "always",
+					"focus": false,
+					"panel": "shared"
+				}
+			},
+			{
+				"label": "📦 Install Backend Dependencies",
+				"type": "shell",
+				"command": "npm",
+				"args": ["install"],
+				"options": {
+					"cwd": "${workspaceFolder}/backend"
+				},
+				"group": "build",
+				"presentation": {
+					"echo": true,
+					"reveal": "always",
+					"focus": false,
+					"panel": "shared"
+				}
+			},
+			{
+				"label": "📦 Install Frontend Dependencies",
+				"type": "shell",
+				"command": "npm",
+				"args": ["install"],
+				"options": {
+					"cwd": "${workspaceFolder}/frontend"
+				},
+				"group": "build",
+				"presentation": {
+					"echo": true,
+					"reveal": "always",
+					"focus": false,
+					"panel": "shared"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "🐛 Debug Backend (Node.js)",
+				"type": "node",
+				"request": "launch",
+				"program": "${workspaceFolder}/backend/index.js",
+				"env": {
+					"NODE_ENV": "development",
+					"PORT": "5001"
+				},
+				"console": "integratedTerminal",
+				"restart": true,
+				"runtimeExecutable": "node",
+				"skipFiles": ["<node_internals>/**"]
+			},
+			{
+				"name": "🐛 Attach to Backend Container",
+				"type": "node",
+				"request": "attach",
+				"port": 9229,
+				"address": "localhost",
+				"localRoot": "${workspaceFolder}/backend",
+				"remoteRoot": "/app",
+				"skipFiles": ["<node_internals>/**"]
+			}
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.vscode-docker",
+			"ms-vscode.powershell",
+			"bradlc.vscode-tailwindcss",
+			"esbenp.prettier-vscode",
+			"ms-vscode.vscode-json",
+			"redhat.vscode-yaml",
+			"ms-python.python",
+			"GitHub.copilot",
+			"GitHub.copilot-chat",
+			"ms-vscode.vscode-sqlite",
+			"formulahendry.auto-rename-tag",
+			"ms-vscode.vscode-git-graph",
+			"eamodio.gitlens",
+			"ms-vscode.vscode-markdown"
+		]
+	}
+}

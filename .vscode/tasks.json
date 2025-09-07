@@ -1,0 +1,142 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 Start Development Environment",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-File", "./start-dev.ps1"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "🏭 Start Production Environment",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-File", "./start-prod.ps1"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "clear": true
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "🛑 Stop All Services",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-File", "./stop-all.ps1"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "📊 Check System Status",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-File", "./status.ps1"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "🔄 Sync to GitHub",
+      "type": "shell",
+      "command": "git",
+      "args": ["push", "origin", "development"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "📝 Commit Changes"
+    },
+    {
+      "label": "📝 Commit Changes",
+      "type": "shell",
+      "command": "git",
+      "args": ["add", ".", "&&", "git", "commit", "-m", "Session save: ${input:commitMessage}"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🗄️ Backup Database",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "Copy-Item './data-dev/survey.db' './data-dev/survey-backup-$(Get-Date -Format 'yyyyMMdd-HHmmss').db'"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔍 View Response Data",
+      "type": "shell",
+      "command": "docker",
+      "args": [
+        "exec",
+        "surveyproject-backend-dev",
+        "node",
+        "analyze_response_data.js"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "commitMessage",
+      "description": "Enter commit message",
+      "default": "Workspace session save",
+      "type": "promptString"
+    }
+  ]
+}

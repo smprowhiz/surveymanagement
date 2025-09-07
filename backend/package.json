@@ -1,0 +1,36 @@
+{
+  "name": "ldp-survey-backend",
+  "version": "1.0.0",
+  "description": "Backend for LDP Survey Management App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon --env-file=../.env.development index.js",
+    "start:prod": "cross-env NODE_ENV=production node --env-file=../.env.production index.js",
+    "export:xlsx": "node scripts/export-dummy-data-to-xlsx.js",
+    "export:json": "node scripts/export-dummy-data-to-json.js",
+    "report:docx": "node scripts/generate-report-docx.js",
+    "enhance:demo": "node scripts/enhance-demo-data.js",
+    "analyze:survey": "node scripts/analyze-survey-data.js",
+    "scores:questions": "node scripts/print-question-means.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.0.0",
+  "jsonwebtoken": "^9.0.0",
+  "sqlite3": "^5.1.6",
+  "exceljs": "^4.4.0",
+  "docx": "^8.3.2",
+  "docxtemplater": "^3.44.0",
+  "pizzip": "^3.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "cross-env": "^7.0.3"
+  }
+}

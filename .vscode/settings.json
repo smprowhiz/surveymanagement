@@ -1,0 +1,24 @@
+{
+  "workbench.startupEditor": "readme",
+  "workbench.tips.enabled": false,
+  "workbench.welcomePage.walkthroughs.openOnInstall": false,
+  "git.openRepositoryInParentFolders": "always",
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "files.defaultLanguage": "markdown",
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  },
+  "search.useGlobalSearchInEmptyWorkspace": false,
+  "workbench.panel.defaultLocation": "bottom",
+  "workbench.panel.opensMaximized": "never",
+  "terminal.integrated.showExitAlert": false,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "editor.minimap.enabled": true,
+  "editor.minimap.scale": 2,
+  "workbench.activityBar.location": "default",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.iconTheme": "vs-seti"
+}
