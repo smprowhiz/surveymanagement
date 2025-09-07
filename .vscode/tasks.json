@@ -112,6 +112,23 @@
       }
     },
     {
+      "label": "� Quick Save to GitHub",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "$timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm'; git add .; git commit -m \"Session save: $timestamp\"; git push origin main; Write-Host '✅ Saved to GitHub!' -ForegroundColor Green"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
       "label": "🔍 View Response Data",
       "type": "shell",
       "command": "docker",
@@ -120,6 +137,39 @@
         "surveyproject-backend-dev",
         "node",
         "analyze_response_data.js"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "💾 Auto-Save Session",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "$timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'; git add .; git commit -m \"Auto-save session: $timestamp\"; git push origin main; Write-Host '✅ Session auto-saved to GitHub' -ForegroundColor Green"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔔 Check for Updates",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "Write-Host 'Checking workspace status...' -ForegroundColor Yellow; git fetch origin; git status; Write-Host ''; Write-Host 'Docker containers:' -ForegroundColor Cyan; docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'"
       ],
       "group": "test",
       "presentation": {
